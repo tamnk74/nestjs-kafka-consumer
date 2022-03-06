@@ -1,0 +1,70 @@
+version: '3.5'
+services:
+  nest-app:
+    build:
+      context: .
+      target: development
+    container_name: nest_app_container
+    command: npm run start:dev
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - POSTGRES_HOST=postgres
+      - REDIS_HOST=redis
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - '${PORT:-8000}:8000'
+      - 9229:9229
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    networks:
+      - node-network
+  postgres:
+    container_name: postgres_container
+    image: postgres
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-nestdb}
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-changeme}
+    volumes:
+      - dbdata:/data/postgres
+    ports:
+      - 5432:5432
+    networks:
+      - node-network
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin:/root/.pgadmin
+    depends_on:
+      - postgres
+    ports:
+      - '${PGADMIN_PORT:-5050}:80'
+    networks:
+      - node-network
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    privileged: true
+    ports:
+      - 6379:6379
+    networks:
+      - node-network
+volumes:
+  dbdata:
+  pgadmin:
+  node_modules:
+
+networks:
+  node-network:
+    driver: bridge
