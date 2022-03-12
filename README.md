@@ -20,7 +20,8 @@
   <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 </p>
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ftamnk74%2Fnestjs-kafka-consumer.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Ftamnk74%2Fnestjs-kafka-consumer?ref=badge_shield)
+-->
 
 ## Description
 
@@ -120,3 +121,6 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ftamnk74%2Fnestjs-kafka-consumer.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Ftamnk74%2Fnestjs-kafka-consumer?ref=badge_large)
